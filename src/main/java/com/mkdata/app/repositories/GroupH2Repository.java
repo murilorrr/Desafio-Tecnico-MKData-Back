@@ -1,0 +1,12 @@
+package com.mkdata.app.repositories;
+
+import com.mkdata.app.entities.Group;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface GroupH2Repository extends JpaRepository<Group, Long> {
+  public Group findByName(String name);
+  
+}
