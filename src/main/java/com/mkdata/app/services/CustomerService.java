@@ -2,6 +2,7 @@ package com.mkdata.app.services;
 
 import java.util.List;
 
+import com.mkdata.app.commons.ErroCadastroUnico;
 import com.mkdata.app.commons.ErroNaoEncontrado;
 import com.mkdata.app.entities.Customer;
 import com.mkdata.app.repositories.CustomerH2Repository;
@@ -15,8 +16,13 @@ public class CustomerService {
   @Autowired
   CustomerH2Repository h2Repository;
 
-  public Customer create(Customer customer) {
-    return h2Repository.save(customer);
+  public Customer create(Customer customer) throws ErroCadastroUnico {
+    Customer customerValidation = h2Repository.findByCadastro_Unico(customer.getCadastro_Unico());
+    if (customerValidation == null) {
+      return h2Repository.save(customer);
+    }
+
+    throw new ErroCadastroUnico();
   }
 
   public List<Customer> getAll() {

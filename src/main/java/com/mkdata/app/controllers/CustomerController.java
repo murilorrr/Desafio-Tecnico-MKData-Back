@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.mkdata.app.commons.ErroCadastroUnico;
 import com.mkdata.app.commons.ErroNaoEncontrado;
 import com.mkdata.app.entities.Customer;
 import com.mkdata.app.services.CustomerService;
@@ -23,7 +24,7 @@ public class CustomerController {
   CustomerService service;
   
   @PostMapping("/customers")
-  public Customer createCustomer(@Valid @RequestBody Customer customer) {
+  public Customer createCustomer(@Valid @RequestBody Customer customer) throws ErroCadastroUnico {
     return service.create(customer);
   }
 
