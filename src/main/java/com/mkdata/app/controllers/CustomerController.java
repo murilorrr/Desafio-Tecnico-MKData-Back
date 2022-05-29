@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import com.mkdata.app.commons.ErroCadastroUnico;
 import com.mkdata.app.commons.ErroNaoEncontrado;
 import com.mkdata.app.entities.Customer;
+import com.mkdata.app.entities.CustomerDTO;
 import com.mkdata.app.services.CustomerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class CustomerController {
   CustomerService service;
   
   @PostMapping("/customers")
-  public Customer createCustomer(@Valid @RequestBody Customer customer) throws ErroCadastroUnico {
+  public Customer createCustomer(@Valid @RequestBody CustomerDTO customer) throws ErroCadastroUnico, ErroNaoEncontrado {
     return service.create(customer);
   }
 
@@ -34,7 +35,7 @@ public class CustomerController {
   }
 
   @PutMapping("/customers")
-  public Customer updateCustomer(@Valid @RequestBody Customer customer, Long id) throws ErroNaoEncontrado {
+  public Customer updateCustomer(@Valid @RequestBody CustomerDTO customer, Long id) throws ErroNaoEncontrado {
     return service.update(customer, id);
   }
 
