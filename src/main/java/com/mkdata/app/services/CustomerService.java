@@ -31,8 +31,6 @@ public class CustomerService {
   public Customer update(Customer newCustomer, Long id) throws ErroNaoEncontrado{
     Customer customer = getById(id);
 
-    valitationCustomer(newCustomer);
-
     customer.setActivated(newCustomer.getActivated());
     customer.setCadastro_Unico(newCustomer.getCadastro_Unico());
     customer.setGroup(newCustomer.getGroup());
@@ -45,16 +43,5 @@ public class CustomerService {
 
   public void delete(Long id) {
     h2Repository.deleteById(id);
-  }
-
-  private void valitationCustomer(Customer customer) {
-    customer.getActivated();
-    customer.getCadastro_Unico();
-    customer.getData_De_Cadastro();
-    customer.getGroup();
-    customer.getId();
-    customer.getInscricao_Unica();
-    customer.getName();
-    customer.getType();
   }
 }
