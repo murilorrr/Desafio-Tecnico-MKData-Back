@@ -2,6 +2,8 @@ package com.mkdata.app.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.mkdata.app.commons.ErroNaoEncontrado;
 import com.mkdata.app.entities.Group;
 import com.mkdata.app.services.GroupService;
@@ -21,7 +23,7 @@ public class GroupController {
   GroupService groupService;
   
   @PostMapping("/groups")
-  public Group createGroup(@RequestBody Group group) {
+  public Group createGroup(@Valid @RequestBody Group group) {
     return groupService.create(group);
   }
 
@@ -31,7 +33,7 @@ public class GroupController {
   }
 
   @PutMapping("/groups")
-  public Group updateGroup(Group group, Long id) throws ErroNaoEncontrado {
+  public Group updateGroup(@Valid @RequestBody Group group, Long id) throws ErroNaoEncontrado {
     return groupService.update(group, id);
   }
 

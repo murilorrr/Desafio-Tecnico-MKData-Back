@@ -2,6 +2,8 @@ package com.mkdata.app.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.mkdata.app.commons.ErroNaoEncontrado;
 import com.mkdata.app.entities.Customer;
 import com.mkdata.app.services.CustomerService;
@@ -21,7 +23,7 @@ public class CustomerController {
   CustomerService service;
   
   @PostMapping("/customers")
-  public Customer createGroup(@RequestBody Customer customer) {
+  public Customer createCustomer(@Valid @RequestBody Customer customer) {
     return service.create(customer);
   }
 
@@ -31,8 +33,8 @@ public class CustomerController {
   }
 
   @PutMapping("/customers")
-  public Customer updateGroup(Customer group, Long id) throws ErroNaoEncontrado {
-    return service.update(group, id);
+  public Customer updateCustomer(@Valid @RequestBody Customer customer, Long id) throws ErroNaoEncontrado {
+    return service.update(customer, id);
   }
 
   @DeleteMapping("/customers")

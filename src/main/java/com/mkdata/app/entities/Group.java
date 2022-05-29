@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,8 +27,11 @@ public class Group {
   private Long id;
   
   @Column
+  @NotEmpty(message = "Name is mandatory")
   private String name;
+
   @Column
+  @NotEmpty(message = "Activated is mandatory")
   private boolean activated;
   
   @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
