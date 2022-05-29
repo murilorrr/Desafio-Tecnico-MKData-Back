@@ -27,19 +27,25 @@ public class Customer {
 
   @Column
   private String name;
+
   @Column
   private String type;
+
   @Column
   private String cadastro_Unico; //cpf - cnpj
+
+  @Column
   private String inscricao_Unica; // rg - ie
+
+  @Column
   private LocalDate data_De_Cadastro;
+  
+  @Column
+  private boolean activated;
 
   @ManyToOne
   @JoinColumn(name = "group_id")
   private Group group;
-
-  @Column
-  private boolean activated;
 
   public boolean getActivated() {
     return this.activated;
