@@ -1,10 +1,12 @@
 package com.mkdata.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +35,9 @@ public class Group {
   @NotNull(message = "Activated is mandatory")
   private boolean activated;
 
-  @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToMany(mappedBy = "group", cascade = CascadeType.ALL,
+      orphanRemoval = true, fetch = FetchType.LAZY)
+  @JsonIgnore
   private List<Customer> customers;
 
   public boolean getActivated() {
