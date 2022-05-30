@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CustomerH2Repository extends JpaRepository<Customer, Long> {
   public Customer findByName(String name);
 
-  public Customer findByCadastro_Unico(String cadastro_Unico);
+  public Customer findByCadastroUnico(String cadastroUnico);
 }

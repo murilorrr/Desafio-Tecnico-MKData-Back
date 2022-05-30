@@ -1,10 +1,10 @@
 package com.mkdata.app.services;
 
-import java.util.List;
-
 import com.mkdata.app.commons.ErroNaoEncontrado;
 import com.mkdata.app.entities.Group;
 import com.mkdata.app.repositories.GroupH2Repository;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,10 @@ public class GroupService {
       () -> new ErroNaoEncontrado("Grupo nao existe"));
   }
 
-  public Group update(Group newGroup, Long id) throws ErroNaoEncontrado{
+  /**
+   * .
+   */
+  public Group update(Group newGroup, Long id) throws ErroNaoEncontrado {
     Group group = getById(id);
 
     group.setName(newGroup.getName());

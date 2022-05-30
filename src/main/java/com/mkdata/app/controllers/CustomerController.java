@@ -1,15 +1,13 @@
 package com.mkdata.app.controllers;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
 import com.mkdata.app.commons.ErroCadastroUnico;
 import com.mkdata.app.commons.ErroNaoEncontrado;
 import com.mkdata.app.entities.Customer;
-import com.mkdata.app.entities.CustomerDTO;
+import com.mkdata.app.entities.CustomerDto;
 import com.mkdata.app.services.CustomerService;
 
+import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +23,8 @@ public class CustomerController {
   CustomerService service;
   
   @PostMapping("/customers")
-  public Customer createCustomer(@Valid @RequestBody CustomerDTO customer) throws ErroCadastroUnico, ErroNaoEncontrado {
+  public Customer createCustomer(@Valid @RequestBody CustomerDto customer)
+      throws ErroCadastroUnico, ErroNaoEncontrado {
     return service.create(customer);
   }
 
@@ -35,7 +34,8 @@ public class CustomerController {
   }
 
   @PutMapping("/customers")
-  public Customer updateCustomer(@Valid @RequestBody CustomerDTO customer, Long id) throws ErroNaoEncontrado {
+  public Customer updateCustomer(@Valid @RequestBody CustomerDto customer, Long id)
+      throws ErroNaoEncontrado {
     return service.update(customer, id);
   }
 
