@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,14 +36,14 @@ public class CustomerController {
     return service.getAll();
   }
 
-  @PutMapping("/customers")
-  public Customer updateCustomer(@Valid @RequestBody CustomerDto customer, Long id)
+  @PutMapping("/customers/{id}")
+  public Customer updateCustomer(@Valid @RequestBody CustomerDto customer,@PathVariable Long id)
       throws ErroNaoEncontrado {
     return service.update(customer, id);
   }
 
-  @DeleteMapping("/customers")
-  public void deleteGroup(Long id) {
+  @DeleteMapping("/customers/{id}")
+  public void deleteGroup(@PathVariable Long id) {
     service.delete(id);
   }
 
